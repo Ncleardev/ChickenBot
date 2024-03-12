@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="ChickenBot, Discord Bot">
+  <title>ChickenBot for Discord</title>
+  <link rel="icon" href="ico.png">
+</head>
+
+<body>
+  <style>
+    .container {
+      animation: nogravity 3s ease-in-out infinite alternate;
+      position: relative;
+    }
+
+    #one,
+    #two {
+      height: 250px;
+      border-radius: 20px;
+      margin: 10px;
+    }
+
+    @keyframes nogravity {
+      0% {
+        transform: translateY(10px);
+      }
+
+      100% {
+        transform: translateY(50px);
+      }
+    }
+
+    #one {
+      transform: perspective(1000px) rotateX(20deg) rotateY(20deg) rotate(-5deg) translateX(-15px);
+    }
+
+    #two {
+      transform: perspective(1000px) rotateX(20deg) rotateY(-20deg) rotate(5deg) translateX(-15px);
+    }
+
+    #logo {
+      width: 100px;
+      height: 100px;
+      border-radius: 20px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100px;
+      height: 100px;
+      margin-top: 60px;
+    }
+
+    body {
+      font-family: Lato, Calibri, Arial;
+      color: white;
+      text-align: center;
+      margin-top: 30px;
+      animation: welcome 2s;
+    }
+
+    html {
+      background-color: rgb(15, 15, 15);
+      background-image: linear-gradient(0deg, rgb(15, 15, 15), rgb(100, 100, 100));
+      background-repeat: no-repeat;
+      overflow-x: hidden;
+      margin-bottom: 30px;
+    }
+
+    @keyframes welcome {
+      0% {
+        opacity: 0;
+      }
+
+      5% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 100%;
+      }
+    }
+
+    a:link,
+    a:visited {
+      color: white;
+      background-color: transparent;
+      text-decoration: none;
+      transition: 0.4s all;
+    }
+
+    #click {
+      padding: 20px;
+      border-radius: 10px;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding-left: 50px;
+      padding-right: 50px;
+      transition: 0.4s all;
+    }
+
+    #click:hover {
+      background-color: rgba(255, 255, 255, 0.5);
+      color: black;
+      transition: 0.4s all;
+    }
+
+    #k {
+      animation: o 1s linear infinite 1s;
+    }
+
+    @keyframes o {
+      0% {
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      60% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    text {
+      font-size: xx-large;
+    }
+  </style>
+  <a style="left: 0; top: 0; padding: 10px; margin: 10px; position: absolute;" id="click"
+    href="https://ncleardev.github.io/">Back to
+    main page</a>
+  <img src="ico.png" id="logo">
+  <br><text>ChickenBot - The ultimate bot that fills the gap in your server</text><text id="k"
+    style="opacity: 0;">|</text>
+  <h2 style="margin: 30px;"><a id="click"
+      href="https://discord.com/api/oauth2/authorize?client_id=871123003134595154&permissions=8&scope=bot">Add to
+      Server</a></h2>
+  <h3>1ping - check bot's ping<br>
+    1info - info about bot<br>
+    1xp - check your xp<br>
+    1roll - roll a dice<br>
+    1say [message] - repeat message<br>
+    1reactions - auto react with emojis to every channel's message<br>
+    1image - send random image</h3>
+  <div class="container">
+    <img id='one' src="https://ncleardev.github.io/ChickenBot/1.png">
+    <img id='two' src="https://ncleardev.github.io/ChickenBot/2.png">
+  </div>
+</body>
+
+</html>
