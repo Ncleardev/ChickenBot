@@ -1,6 +1,6 @@
 const fs = require('fs');
 const keep_alive = require('./server.js')
-const { Client, GatewayIntentBits, EmbedBuilder } = require('discord.js');
+const { Client, GatewayIntentBits, EmbedBuilder, ChannelType } = require('discord.js');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages] });
 
@@ -39,7 +39,7 @@ client.on('interactionCreate', async (interaction) => {
           interaction.reply(`🎲 - ${randomInt(1, 6)}!`);
           break;
         case 'help':
-          interaction.reply('**ChcikenBot Help**\n> Commands List:\n```/ping - check bot\'s ping\n/info - info about bot and server\n/roll - roll a dice\n/say [message] - repeat message\n/reactions - auto react with emojis to every channel\'s message\n/image - send random image```');
+          interaction.reply('**ChickenBot Help**\n> Commands List:\n```/ping - check bot\'s ping\n/info - info about bot and server\n/roll - roll a dice\n/say [message] - repeat message\n/reactions - auto react with emojis to every channel\'s message\n/image - send random image```');
           break;
         case 'info':
           const botEmbed = new EmbedBuilder()
@@ -54,6 +54,8 @@ client.on('interactionCreate', async (interaction) => {
               { name: 'RAM Usage', value: String(formatMemoryUsage(process.memoryUsage())), inline: true },
               { name: 'Uptime', value: String(calculateUptime()), inline: true }
             )
+
+          if(interaction.channel.type == ChannelType.DM){ interaction.reply({ embeds: [botEmbed] }); return }
 
           const serverEmbed = new EmbedBuilder()
             .setColor(0xC83200)
@@ -82,7 +84,7 @@ client.on('interactionCreate', async (interaction) => {
           let database = readDatabase();
 
           let channelId = interaction.channel.id;
-          if (interaction.options.getChannel('channel')) { channelId = interaction.options.getChannel('channel').id }
+          if (interaction.options.getChannel('channel') && interaction.options.getChannel('channel').type == ChannelType.GuildText) { channelId = interaction.options.getChannel('channel').id }
 
           let msg
           if (interaction.options.getString('custom')) {
@@ -109,7 +111,7 @@ client.on('interactionCreate', async (interaction) => {
           }
 
           writeDatabase(database);
-          interaction.reply(`Auto reactions turned **${msg}** for channel <#${channelId}>`);
+          interaction.reply(`Auto reactions **${msg}** for channel <#${channelId}>`);
           break
       }
     }
