@@ -16,9 +16,10 @@ const databaseBackupURL = process.env.BACKUP
 
 client.on('ready', () => {
   console.log(`${client.user.tag} [Online]`);
-  console.log('Loading database...')
-  getDatabaseBackup()
-  updateStatus();
+  client.user.setActivity('[Online]');
+  console.log('Loading database...');
+  getDatabaseBackup();
+  setTimeout(updateStatus(), 10000);
 });
 
 client.on('interactionCreate', async (interaction) => {
