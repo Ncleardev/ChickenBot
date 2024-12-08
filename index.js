@@ -19,7 +19,7 @@ client.on('ready', () => {
   client.user.setActivity('[Online]');
   console.log('Loading database...');
   getDatabaseBackup();
-  setTimeout(updateStatus, 30000);
+  setTimeout(updateStatus(), 30000);
 });
 
 client.on('interactionCreate', async (interaction) => {
