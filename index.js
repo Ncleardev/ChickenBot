@@ -134,9 +134,11 @@ client.on('messageCreate', async (message) => {
 client.login(token);
 
 function updateStatus() {
+  let ping = Math.round(client.ws.ping)
+  if (ping == -1) { ping = 123 }
   let i = 0
   client.guilds.cache.forEach(element => { i += element.memberCount });
-  client.user.setActivity(`/help | ${Math.round(client.ws.ping)} ms | Servers: ${client.guilds.cache.size} | Users: ${i}`);
+  client.user.setActivity(`/help | ${ping} ms | Servers: ${client.guilds.cache.size} | Users: ${i}`);
   return i
 }
 
